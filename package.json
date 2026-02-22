@@ -1,0 +1,13 @@
+{
+  "name": "allah",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "rank": "tsx src/rank.ts"
+  },
+  "dependencies": {
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}
