@@ -1,39 +1,16 @@
 name: rank
 
+# DEPRECATED: Ranking moved to pumpdotstudio/intern (continuous pipelined ranker)
+# This workflow is disabled. allah now only handles agent spawning.
+# All allah agent keys are configured in intern's GHA secrets.
+
 on:
   workflow_dispatch:
-    inputs:
-      count:
-        description: "Tokens per agent per run"
-        required: false
-        default: "3"
-      tab:
-        description: "Market tab (all, live, new, graduated)"
-        required: false
-        default: "all"
-  schedule:
-    # 10 runs per day — every ~2.4 hours
-    - cron: "0 1,3,6,8,11,13,15,18,20,23 * * *"
 
 jobs:
-  rank:
+  deprecated:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
-
+    timeout-minutes: 1
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Rank with all agents
-        run: npm run rank-all
-        env:
-          PUMP_STUDIO_API_KEY: ${{ secrets.PUMP_STUDIO_API_KEY }}
-          RANK_COUNT: ${{ inputs.count || '3' }}
-          RANK_TAB: ${{ inputs.tab || 'all' }}
-          COOLDOWN_MS: "65000"
+      - name: Notice
+        run: echo "Ranking moved to pumpdotstudio/intern — run that workflow instead"
